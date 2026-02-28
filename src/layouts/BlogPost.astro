@@ -1,57 +1,104 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+// Generate canonical URL for sharing
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Structured Data for Google Rich Snippets (NewsArticle)
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": title,
+  "description": description,
+  "datePublished": pubDate.toISOString(),
+  "dateModified": updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+  "author": [{
+      "@type": "Organization",
+      "name": SITE_TITLE,
+      "url": Astro.site
+  }]
+};
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={`${title} | ${SITE_TITLE}`} description={description} />
+		<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 		<style>
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
+				max-width: 720px;
+				margin: 3rem auto;
+				padding: 0 2rem;
 			}
 			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
+				color: var(--text-primary);
 			}
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+				margin-bottom: 2rem;
+				line-height: 1.2;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				font-size: 2.25rem;
+				font-weight: 700;
+				margin: 0 0 1rem 0;
+				letter-spacing: -0.04em;
 			}
 			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				margin-bottom: 1rem;
+				font-family: var(--font-mono);
 			}
 			.last-updated-on {
 				font-style: italic;
+				display: inline-block;
+				margin-left: 0.5rem;
 			}
+			.share-box {
+				margin-top: 4rem;
+				padding: 2rem;
+				background: var(--bg-surface);
+				border: 1px solid var(--border-color);
+				border-radius: 12px;
+				text-align: center;
+			}
+			.share-box h4 {
+				margin: 0 0 1rem 0;
+				font-size: 1.15rem;
+			}
+			.share-buttons {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+			}
+			.share-btn {
+				padding: 0.5rem 1rem;
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				background: var(--bg-color);
+				color: var(--text-primary);
+				font-size: 0.9rem;
+				font-weight: 500;
+				text-decoration: none;
+				transition: all 0.2s;
+			}
+			.share-btn:hover {
+				border-color: var(--accent-color);
+				color: var(--accent-color);
+			}
+			.share-btn.x { border-color: #000; color: #000; }
+			.share-btn.x:hover { background: #000; color: #fff; }
+			.share-btn.in { border-color: #0a66c2; color: #0a66c2; }
+			.share-btn.in:hover { background: #0a66c2; color: #fff; }
 		</style>
 	</head>
 
@@ -59,9 +106,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title">
 						<div class="date">
@@ -69,15 +113,30 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										(Updated <FormattedDate date={updatedDate} />)
 									</div>
 								)
 							}
 						</div>
 						<h1>{title}</h1>
-						<hr />
 					</div>
+					
+					<!-- Content Injection -->
 					<slot />
+					
+					<!-- Viral Loop: Social Share -->
+					<div class="share-box">
+						<h4>Share this Intelligence Brief</h4>
+						<div class="share-buttons">
+							<a class="share-btn x" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(canonicalURL.href)}&via=TechFrontier`} target="_blank" rel="noopener noreferrer">
+								Share on X
+							</a>
+							<a class="share-btn in" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalURL.href)}`} target="_blank" rel="noopener noreferrer">
+								Share on LinkedIn
+							</a>
+						</div>
+					</div>
+					
 				</div>
 			</article>
 		</main>
