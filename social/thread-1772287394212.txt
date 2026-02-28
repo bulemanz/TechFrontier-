@@ -1,0 +1,20 @@
+🔥 The Top 5 Tech Shifts You Missed Today
+A thread 🧵👇
+
+1/ OpenAI – How to delete your account
+🔗 https://help.openai.com/en/articles/6378407-how-to-delete-your-account
+
+2/ Don't trust AI agents
+🔗 https://nanoclaw.dev/blog/nanoclaw-security-model
+
+3/ We Will Not Be Divided
+🔗 https://notdivided.org
+
+4/ Unsloth Dynamic 2.0 GGUFs
+🔗 https://unsloth.ai/docs/basics/unsloth-dynamic-2.0-ggufs
+
+5/ Show HN: SplatHash – A lightweight alternative to BlurHash and ThumbHash
+🔗 https://github.com/junevm/splathash
+
+Subscribe to TechFrontier for daily deep-dives on the architecture behind the hype.
+🔗 https://techfrontier.vercel.app
