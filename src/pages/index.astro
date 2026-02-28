@@ -6,9 +6,22 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
+// 获取所有文章，按日期倒序
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// 提取唯一日期进行分组 (去掉时间，只比较 YYYY-MM-DD)
+const groupedPosts = posts.reduce((acc, post) => {
+	const dateKey = post.data.pubDate.toISOString().split('T')[0];
+	if (!acc[dateKey]) {
+		acc[dateKey] = [];
+	}
+	acc[dateKey].push(post);
+	return acc;
+}, {} as Record<string, typeof posts>);
+
+const sortedDates = Object.keys(groupedPosts).sort((a, b) => b.localeCompare(a));
 ---
 
 <!doctype html>
@@ -23,23 +36,50 @@ const posts = (await getCollection('blog')).sort(
 			<p style="margin-bottom: 3rem; font-size: 1.15rem; color: var(--text-secondary);">A curated daily brief tracking architectural shifts, open-source innovation, and early-stage commercial viability for founders and engineers.</p>
 			
 			<section>
-				<h2>Latest Briefs</h2>
-				<ul class="post-list">
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`} class="post-card">
-									<h4>{post.data.title}</h4>
-									<p>
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+				{sortedDates.map((date) => {
+					// 将 YYYY-MM-DD 转为易读格式，如 "February 28, 2026"
+					const dateObj = new Date(date);
+					const formattedDate = dateObj.toLocaleDateString('en-US', {
+						month: 'long',
+						day: 'numeric',
+						year: 'numeric'
+					});
+
+					return (
+						<div class="date-group" style="margin-bottom: 3rem;">
+							<h3 class="date-header">{formattedDate}</h3>
+							<ul class="post-list" style="margin-top: 1rem;">
+								{groupedPosts[date].map((post) => (
+									<li>
+										<a href={`/blog/${post.id}/`} class="post-card">
+											<h4>{post.data.title}</h4>
+											{post.data.description && <p class="desc" style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.5rem;">{post.data.description}</p>}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					);
+				})}
 			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	.date-header {
+		font-size: 1.15rem;
+		color: var(--text-muted);
+		border-bottom: 1px solid var(--border-color);
+		padding-bottom: 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-weight: 600;
+	}
+	.desc {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
