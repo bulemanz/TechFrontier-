@@ -1,0 +1,14 @@
+{
+  "name": "TechFrontier Growth & Analytics Evolution",
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 10 * * 5",
+    "tz": "America/Los_Angeles"
+  },
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Use web_search to find advanced SEO optimization for Astro v5, newsletter conversion rate optimization (CRO), and how to analyze basic web traffic signals without Google Analytics (e.g., Vercel Analytics or Cloudflare Web Analytics). Read the top results. Formulate 1-2 code-level or content-level improvements to increase TechFrontier's visibility and conversion. If an action is safe and zero-cost, implement it in the codebase (git add, commit, push). Write a brief weekly growth report to memory/projects.md.",
+    "model": "sonnet"
+  },
+  "sessionTarget": "isolated"
+}

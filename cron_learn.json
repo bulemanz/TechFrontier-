@@ -1,0 +1,14 @@
+{
+  "name": "Self-Evolution: Monetization & OpenClaw Meta",
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 10 */3 * *",
+    "tz": "America/Los_Angeles"
+  },
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Use web_search to find recent strategies on 'how people are making money with AI agents', 'OpenClaw use cases for monetization', and 'newsletter growth hacking 2026'. Read top results, synthesize 3 actionable, zero-cost monetization experiments we can deploy on TechFrontier or as standalone micro-SaaS. Write the findings into memory/lessons.md and append a summary to memory/projects.md. Do not announce unless you find a massive, immediately deployable arbitrage opportunity.",
+    "model": "sonnet"
+  },
+  "sessionTarget": "isolated"
+}
