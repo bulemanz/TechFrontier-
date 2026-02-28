@@ -1,34 +1,104 @@
-/* 科技感极简暗黑主题 (类似 Vercel / Linear 的审美) */
+/* 科技感极简暗黑主题 (极致打磨版 - 类似 Vercel / Linear / Stripe) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
 :root {
-  --bg-color: #0a0a0a;
+  --bg-color: #000000;
+  --bg-surface: #111111;
+  --bg-card-hover: rgba(255, 255, 255, 0.03);
   --text-primary: #ededed;
-  --text-secondary: #888888;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
   --accent-color: #3b82f6; /* 科技蓝 */
-  --border-color: #333333;
+  --accent-hover: #60a5fa;
+  --border-color: #27272a;
+  --border-hover: #3f3f46;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: 'Geist Mono', 'Fira Code', Consolas, monospace;
+  --font-mono: 'Fira Code', Consolas, monospace;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-main {
+/* 导航与页眉极致干净 */
+header {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1.5rem 0;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+header nav {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
+header a {
+  border: none;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+header a.active {
+  color: var(--text-primary);
+}
+
+header a:hover {
+  color: var(--text-primary);
+  background: none;
+}
+
+/* 核心内容区约束宽度与留白 */
+main {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-top: 2rem;
 }
 
 a {
@@ -39,43 +109,99 @@ a {
 }
 
 a:hover {
-  color: var(--accent-color);
-  border-bottom-color: var(--accent-color);
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
 }
 
 blockquote {
-  border-left: 3px solid var(--accent-color);
-  margin: 1.5rem 0;
-  padding-left: 1rem;
+  border-left: 2px solid var(--accent-color);
+  margin: 2rem 0;
+  padding: 0.5rem 0 0.5rem 1.5rem;
   color: var(--text-secondary);
   font-style: italic;
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent);
+  border-radius: 0 4px 4px 0;
 }
 
 code {
   font-family: var(--font-mono);
-  background: #1a1a1a;
+  background: var(--bg-surface);
   padding: 0.2em 0.4em;
   border-radius: 4px;
-  font-size: 0.9em;
-  color: #60a5fa;
+  font-size: 0.85em;
+  color: #93c5fd;
+  border: 1px solid var(--border-color);
 }
 
-/* 博客列表卡片样式 */
-.post-list {
-  list-style: none;
-  padding: 0;
-}
-
-.post-card {
+pre {
+  background: var(--bg-surface) !important;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  background: #111111;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  overflow-x: auto;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: inherit;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 3rem 0;
+}
+
+/* 博客列表卡片重新设计 */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.post-list li {
+  margin-bottom: 0;
+}
+
+.post-card {
+  display: block;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.25rem;
+  background: var(--bg-surface);
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .post-card:hover {
-  border-color: var(--accent-color);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
   transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border-hover);
+}
+
+.post-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.post-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* 隐藏无关紧要的图片框 */
+.hero-image {
+  display: none;
 }
