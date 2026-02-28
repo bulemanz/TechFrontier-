@@ -28,7 +28,8 @@ async function main() {
     // 生成格式化的日期 YYYY-MM-DD
     const dateStr = new Date().toISOString().split('T')[0];
     
-    let content = `---\ntitle: "Tech & Startup Intelligence Brief (${dateStr})"\ndescription: "Daily curated insights tracking global developers and tech innovation."\npubDate: "${new Date().toISOString()}"\n---\n\n`;
+    // 改了标题: 去掉 Intelligence Brief 前缀
+    let content = `---\ntitle: "Tech & Startup Insights (${dateStr})"\ndescription: "Daily curated insights tracking global developers and tech innovation."\npubDate: "${new Date().toISOString()}"\n---\n\n`;
     
     content += "## 🌐 Global Tech Trends\n\n";
     for (let i = 0; i < stories.length; i++) {
