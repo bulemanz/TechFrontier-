@@ -12,23 +12,23 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>Global Tech & Startup Insights</h1>
-			<p style="margin-bottom: 3rem;">A curated intelligence brief for founders, developers, and investors. Tracking the forefront of open-source innovation and early-stage commercial viability.</p>
+			<h1>前沿科技与创投洞察</h1>
+			<p style="margin-bottom: 3rem; font-size: 1.15rem; color: var(--text-secondary);">为科技创业者、开发者与技术投资人打造的精粹情报。追踪开源架构的底层创新、早期商业化验证信号与前沿技术趋势。</p>
 			
 			<section>
-				<h2>Recent Briefs</h2>
+				<h2>最新简报</h2>
 				<ul class="post-list">
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`} class="post-card">
+								<a href={`/blog/${post.slug}/`} class="post-card">
 									<h4>{post.data.title}</h4>
 									<p>
 										<FormattedDate date={post.data.pubDate} />
