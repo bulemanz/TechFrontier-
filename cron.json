@@ -1,0 +1,14 @@
+{
+  "name": "TechFrontier Daily Crawler",
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 7 * * *",
+    "tz": "America/Los_Angeles"
+  },
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Run the TechFrontier fetch_trends script to get the latest HN top stories. Then git add, commit and push to remote. Keep it quiet unless it fails.",
+    "model": "haiku"
+  },
+  "sessionTarget": "isolated"
+}
