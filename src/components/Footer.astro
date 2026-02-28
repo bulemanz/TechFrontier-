@@ -3,15 +3,76 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} TechFrontier. All rights reserved.
+	<div class="newsletter-section">
+		<h4>Join the Inner Circle</h4>
+		<p>Receive our zero-noise intelligence brief directly in your inbox. No spam, ever.</p>
+		<form class="newsletter-form" action="mailto:your-email@example.com" method="GET">
+			<input type="email" placeholder="Your work email..." required />
+			<button type="submit">Subscribe</button>
+		</form>
+	</div>
+	<div class="copyright">
+		&copy; {today.getFullYear()} TechFrontier. All rights reserved.
+	</div>
 </footer>
 <style>
 	footer {
 		padding: 4rem 2rem 2rem 2rem;
 		text-align: center;
 		color: var(--text-muted);
-		font-size: 0.9em;
 		border-top: 1px solid var(--border-color);
 		margin-top: 4rem;
+	}
+	.newsletter-section {
+		max-width: 480px;
+		margin: 0 auto 3rem auto;
+		padding: 2.5rem;
+		background: var(--bg-surface);
+		border: 1px solid var(--border-color);
+		border-radius: 12px;
+	}
+	.newsletter-section h4 {
+		color: var(--text-primary);
+		margin: 0 0 0.5rem 0;
+		font-size: 1.25rem;
+	}
+	.newsletter-section p {
+		font-size: 0.95rem;
+		margin-bottom: 1.5rem;
+	}
+	.newsletter-form {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.newsletter-form input {
+		flex: 1;
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 6px;
+		background: var(--bg-color);
+		color: var(--text-primary);
+		font-family: inherit;
+		font-size: 0.95rem;
+	}
+	.newsletter-form input:focus {
+		outline: none;
+		border-color: var(--accent-color);
+		box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+	}
+	.newsletter-form button {
+		padding: 0.75rem 1.5rem;
+		background: var(--text-primary);
+		color: var(--bg-color);
+		border: none;
+		border-radius: 6px;
+		font-weight: 500;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+	.newsletter-form button:hover {
+		background: var(--text-secondary);
+	}
+	.copyright {
+		font-size: 0.9em;
 	}
 </style>
