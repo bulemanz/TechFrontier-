@@ -1,0 +1,20 @@
+🔥 The Top 5 Tech Shifts You Missed Today
+A thread 🧵👇
+
+1/ Ghostty – Terminal Emulator
+🔗 https://ghostty.org/docs
+
+2/ MCP is dead. Long live the CLI
+🔗 https://ejholmes.github.io/2026/02/28/mcp-is-dead-long-live-the-cli.html
+
+3/ Microgpt
+🔗 http://karpathy.github.io/2026/02/12/microgpt/
+
+4/ AI Made Writing Code Easier. It Made Being an Engineer Harder
+🔗 https://www.ivanturkovic.com/2026/02/25/ai-made-writing-code-easier-engineering-harder/
+
+5/ Why XML Tags Are So Fundamental to Claude
+🔗 https://glthr.com/XML-fundamental-to-Claude
+
+Subscribe to TechFrontier for daily deep-dives on the architecture behind the hype.
+🔗 https://techfrontier.vercel.app
