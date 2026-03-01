@@ -1,0 +1,20 @@
+🔥 The Top 5 Tech Shifts You Missed Today
+A thread 🧵👇
+
+1/ Microgpt
+🔗 http://karpathy.github.io/2026/02/12/microgpt/
+
+2/ We do not think Anthropic should be designated as a supply chain risk
+🔗 https://twitter.com/OpenAI/status/2027846016423321831
+
+3/ The Windows 95 user interface: A case study in usability engineering (1996)
+🔗 https://dl.acm.org/doi/fullHtml/10.1145/238386.238611
+
+4/ 10-202: Introduction to Modern AI (CMU)
+🔗 https://modernaicourse.org
+
+5/ The happiest I've ever been
+🔗 https://ben-mini.com/2026/the-happiest-ive-ever-been
+
+Subscribe to TechFrontier for daily deep-dives on the architecture behind the hype.
+🔗 https://techfrontier.vercel.app
