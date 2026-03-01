@@ -1,0 +1,20 @@
+🔥 The Top 5 Tech Shifts You Missed Today
+A thread 🧵👇
+
+1/ Microgpt
+🔗 http://karpathy.github.io/2026/02/12/microgpt/
+
+2/ Decision trees – the unreasonable power of nested decision rules
+🔗 https://mlu-explain.github.io/decision-tree/
+
+3/ 10-202: Introduction to Modern AI (CMU)
+🔗 https://modernaicourse.org
+
+4/ We do not think Anthropic should be designated as a supply chain risk
+🔗 https://twitter.com/OpenAI/status/2027846016423321831
+
+5/ Why is the first C++ (m)allocation always 72 KB?
+🔗 https://joelsiks.com/posts/cpp-emergency-pool-72kb-allocation/
+
+Subscribe to TechFrontier for daily deep-dives on the architecture behind the hype.
+🔗 https://techfrontier.vercel.app
